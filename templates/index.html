@@ -1,1 +1,37 @@
-hello
+<!DOCTYPE>
+<html>
+<head>
+	
+</head>
+<body>
+{% with messages = get_flashed_messages() %}
+   {% if messages %}
+      {% for message in messages %}
+         {{ message }}
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
+<form method="POST">
+<!-- 	name: <br>
+	<input type="text" name="name">
+	<br>
+	Choice 1: <br>
+	<input type="text" name="choice1">
+-->	
+	<label for="title">Name:</label>
+	<textarea rows="1" id="title" name = "name"></textarea>
+	<br>
+	<label for="title">Choice 1:</label>
+	<textarea rows="1" id="title" name = "choice1"></textarea>
+	<br>
+	<label for="title">Choice 2:</label>
+	<textarea rows="1" id="title" name = "choice2"></textarea>
+	<br>
+	<label for="title">Choice 3:</label>
+	<textarea rows="1" id="title" name = "choice3"></textarea>
+	<br>
+	<input type="submit" name="Submit">
+</form>
+</body>
+</html>
