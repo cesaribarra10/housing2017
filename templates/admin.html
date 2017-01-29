@@ -1,0 +1,12 @@
+{% for lst in people %}
+<h1>{{lst['name']}}</h1>
+{% for lst in lst['lst'] %}
+<li>{{lst['choice1']}}</li>
+<li>{{lst['choice2']}}</li>
+<li>{{lst['choice3']}}</li>
+{% endfor %}
+{% endfor %}
+
+<form method="POST">
+	<button type="submit" name="Submit">sort</button>
+</form>

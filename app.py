@@ -10,6 +10,8 @@ app.secret_key = 'some_secret'
 client = MongoClient('mongodb://cesar:cesar@ds155097.mlab.com:55097/housing')
 db = client.housing
 
+main_list = []
+
 
 @app.route('/', methods=["GET", "POST"])
 def home():
@@ -25,7 +27,31 @@ def home():
         return render_template('index.html')
     else:
         print('stuff')
+        cur = db.names.find({})
+        names = [doc for doc in cur]
+        lst = list(map(print, names))
+        x = map(lambda x: print(x['name']), lst)
         return render_template('index.html')
+
+
+@app.route('/admin', methods=['GET', 'POST'])
+def admin():
+    collection = list(db.names.find())
+    people = []
+    for item in collection:
+        lst = {}
+        lst['name'] = item['name']
+        lst['lst'] = item['list']
+        people.append(lst)
+
+    main_list = people
+    return render_template('admin.html', people=people)
+
+
+@app.route('/sort', methods=['GET', 'POST'])
+def sort():
+
+
 
 
 if __name__ == "__main__":
